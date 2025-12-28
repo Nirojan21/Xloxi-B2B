@@ -216,8 +216,8 @@ The temple is renowned for its architectural excellence, intricate carvings, and
   },
 ]
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const temple = temples.find((t) => t.slug === slug)
 
   if (!temple) {
@@ -232,8 +232,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function TempleDetailPage({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export default async function TempleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   const temple = temples.find((t) => t.slug === slug)
 
   if (!temple) {
