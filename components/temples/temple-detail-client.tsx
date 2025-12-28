@@ -45,6 +45,8 @@ import {
   Share2,
 } from "lucide-react"
 import { Users } from "lucide-react" // Import Users icon
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Calendar as CalendarComponent } from "@/components/ui/calendar"
 
 const mockReviews = [
   {
@@ -418,6 +420,89 @@ export function TempleDetailClient({ temple }: TempleDetailClientProps) {
 
   const handleAddToCart = async (product: (typeof products)[0]) => {
     await addItem(product as any, 1)
+  }
+
+  const handleAddTicketToCart = () => {
+    if (!selectedTicket || !selectedDate) {
+      toast({
+        title: "Missing information",
+        description: "Please select a date to continue",
+        variant: "destructive",
+      })
+      return
+    }
+
+    if (selectedTicket.requiresRasi && !bookingDetails.rasi) {
+      toast({
+        title: "Missing information",
+        description: "Please select Rasi",
+        variant: "destructive",
+      })
+      return
+    }
+
+    if (selectedTicket.requiresNakshatram && !bookingDetails.nakshatram) {
+      toast({
+        title: "Missing information",
+        description: "Please select Nakshatram",
+        variant: "destructive",
+      })
+      return
+    }
+
+    if (!bookingDetails.name.trim()) {
+      toast({
+        title: "Missing information",
+        description: "Please enter devotee name",
+        variant: "destructive",
+      })
+      return
+    }
+
+    if (!bookingDetails.time) {
+      toast({
+        title: "Missing information",
+        description: "Please select a time",
+        variant: "destructive",
+      })
+      return
+    }
+
+    const ticketItem = {
+      type: "TICKET" as const,
+      ticketId: selectedTicket.id,
+      templeId: temple.id,
+      templeName: temple.name,
+      name: selectedTicket.name,
+      price: selectedTicket.price,
+      quantity: 1,
+      image: temple.image,
+      date: format(selectedDate, "yyyy-MM-dd"),
+      time: bookingDetails.time,
+      devotee: bookingDetails.name,
+      rasi: bookingDetails.rasi || undefined,
+      nakshatram: bookingDetails.nakshatram || undefined,
+      extraPersons: bookingDetails.extraPersons,
+      extraPersonCharge: selectedTicket.extraPersonCharge,
+    }
+
+    addItem(ticketItem)
+
+    toast({
+      title: "Ticket added to cart",
+      description: `${selectedTicket.name} has been added to your cart`,
+    })
+
+    setIsBookingOpen(false)
+    setSelectedDate(undefined)
+    setSelectedTicket(null)
+    setBookingDetails({
+      name: "",
+      rasi: "",
+      nakshatram: "",
+      time: "",
+      extraPersons: 0,
+    })
   }
 
   const calculateTicketTotal = () => {
@@ -1142,18 +1227,29 @@ export function TempleDetailClient({ temple }: TempleDetailClientProps) {
               {/* Date Selection */}
               <div className="space-y-2">
                 <Label>Select Date</Label>
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    className={cn(
-                      "w-full justify-start text-left font-normal",
-                      !selectedDate && "text-muted-foreground",
-                    )}
-                  >
-                    <Calendar className="mr-2 h-4 w-4" />
-                    {selectedDate ? format(selectedDate, "PPP") : "Pick a date"}
-                  </Button>
-                </div>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-start text-left font-normal",
+                        !selectedDate && "text-muted-foreground",
+                      )}
+                    >
+                      <Calendar className="mr-2 h-4 w-4" />
+                      {selectedDate ? format(selectedDate, "PPP") : "Pick a date"}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <CalendarComponent
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={setSelectedDate}
+                      disabled={(date) => date < new Date(new Date().setHours(0, 0, 0, 0))}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
 
               {/* Time Selection */}
@@ -1295,7 +1391,7 @@ export function TempleDetailClient({ temple }: TempleDetailClientProps) {
             <Button variant="outline" onClick={() => setIsBookingOpen(false)}>
               Cancel
             </Button>
-            <Button onClick={() => setIsBookingOpen(false)}>
+            <Button onClick={handleAddTicketToCart} disabled={!selectedDate}>
               <Check className="mr-2 h-4 w-4" />
               Add to Cart
             </Button>

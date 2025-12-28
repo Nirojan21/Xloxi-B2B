@@ -168,6 +168,52 @@ The temple has been mentioned in many ancient texts and is considered one of the
       "Free Meals",
     ],
   },
+  {
+    id: "5",
+    name: "Brihadeeswarar Temple",
+    slug: "brihadeeswarar-temple",
+    description:
+      "UNESCO World Heritage Site, one of the largest temples in India, built by Raja Raja Chola I. Also known as the Big Temple of Thanjavur.",
+    longDescription: `Brihadeeswarar Temple, also known as the Big Temple of Thanjavur, is a UNESCO World Heritage Site and one of the largest temples in India. Built by Raja Raja Chola I in the 11th century, this temple is a masterpiece of Dravidian architecture.
+
+The temple is dedicated to Lord Shiva and features a massive vimana (tower) that stands at 66 meters tall, making it one of the tallest temple towers in the world. The temple complex includes a large Nandi (bull) statue carved from a single stone, which is one of the largest monolithic Nandi statues in India.
+
+The temple is renowned for its architectural excellence, intricate carvings, and historical significance. It represents the pinnacle of Chola architecture and engineering, with the vimana constructed without any foundation, standing solely on its own weight.`,
+    location: "Thanjavur, Tamil Nadu, India",
+    address: "Membalam Rd, Balaganapathy Nagar, Thanjavur, Tamil Nadu 613007, India",
+    image: "/brihadeeswarar-temple-thanjavur-big-temple.jpg",
+    gallery: [
+      "/temple-gopuram-tower.jpg",
+      "/temple-corridor-pillars.jpg",
+      "/temple-deity-sanctum.jpg",
+      "/temple-tank-water.jpg",
+    ],
+    rating: 4.8,
+    reviews: 1100,
+    ticketCount: 5,
+    productCount: 18,
+    featured: true,
+    timings: {
+      weekday: "6:00 AM - 12:30 PM, 4:00 PM - 8:30 PM",
+      weekend: "6:00 AM - 12:30 PM, 4:00 PM - 8:30 PM",
+      special: "5:30 AM - 9:00 PM (Festival days)",
+    },
+    contact: {
+      phone: "+91 4362 227 777",
+      email: "info@brihadeeswarartemple.org",
+      website: "https://brihadeeswarartemple.org",
+    },
+    amenities: [
+      "Parking",
+      "Wheelchair Access",
+      "Shoe Storage",
+      "Prasadam Counter",
+      "Rest Rooms",
+      "Drinking Water",
+      "Guide Services",
+      "Museum",
+    ],
+  },
 ]
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
