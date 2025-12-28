@@ -5,3 +5,6 @@ b45a5f8a849fc98511ab9244e083dcb7d79bc477 000000000000000000000000000000000000000
 b45a5f8a849fc98511ab9244e083dcb7d79bc477 a31e1f86992422a5dc7d24171a8bbe1df20d70a0 Nirojan21 <alonenirojan@gmail.com> 1766958683 +0530	commit: Update .gitignore to exclude .git-project directory
 a31e1f86992422a5dc7d24171a8bbe1df20d70a0 e447f1b559d4976e2e63d493e51cef14577ef009 Nirojan21 <alonenirojan@gmail.com> 1766959069 +0530	commit: Fix cart component syntax error and add Vercel environment setup scripts
 e447f1b559d4976e2e63d493e51cef14577ef009 fe0633b0b2e0d60facf9a8462de2fb7ba256ee8d Nirojan21 <alonenirojan@gmail.com> 1766959704 +0530	commit: Fix Prisma 7.x compatibility: migrate datasource URL to prisma.config.ts and use MySQL adapter
+fe0633b0b2e0d60facf9a8462de2fb7ba256ee8d 7143dcd803b37610fb92ab401a011a4372c25237 Nirojan21 <alonenirojan@gmail.com> 1766959949 +0530	commit: Simplify Prisma 7.x config: use prisma.config.ts without adapter dependency
+7143dcd803b37610fb92ab401a011a4372c25237 9439848f10255a4662e3f8ab7e9e1efff571dded Nirojan21 <alonenirojan@gmail.com> 1766960029 +0530	commit: Update Prisma client configuration
+9439848f10255a4662e3f8ab7e9e1efff571dded a064deb78de3af63e381880b48e0ff690a157649 Nirojan21 <alonenirojan@gmail.com> 1766960265 +0530	commit: Fix PrismaClient initialization: pass datasource URL in constructor options
