@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "prisma generate && next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "vercel:env:set": "node scripts/set-vercel-env.js",
+    "vercel:env:set:prod": "node scripts/set-vercel-env.js production",
+    "vercel:env:set:preview": "node scripts/set-vercel-env.js preview",
+    "vercel:env:set:dev": "node scripts/set-vercel-env.js development",
+    "vercel:env:ls": "vercel env ls",
+    "vercel:env:pull": "vercel env pull .env.local"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

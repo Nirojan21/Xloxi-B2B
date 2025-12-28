@@ -161,4 +161,20 @@ export function CartClient() {
                   <span>Service Fee (2.5%)</span>
                   <span>${getServiceFee().toFixed(2)}</span>
                 </div>
-                <Separator />\
+                <Separator />
+                <div className="flex justify-between text-lg font-bold">
+                  <span>Total</span>
+                  <span>${getCartTotal().toFixed(2)}</span>
+                </div>
+              </div>
+
+              <Button asChild className="w-full" size="lg">
+                <Link href="/checkout">Proceed to Checkout</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  )
+}

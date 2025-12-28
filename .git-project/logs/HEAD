@@ -1,1 +1,5 @@
 0000000000000000000000000000000000000000 1bbcea1d9da148516a51735b8aa621c611051a14 Nirojan21 <alonenirojan@gmail.com> 1766958575 +0530	initial pull
+1bbcea1d9da148516a51735b8aa621c611051a14 b45a5f8a849fc98511ab9244e083dcb7d79bc477 Nirojan21 <alonenirojan@gmail.com> 1766958605 +0530	commit: xloxi
+b45a5f8a849fc98511ab9244e083dcb7d79bc477 0000000000000000000000000000000000000000 Nirojan21 <alonenirojan@gmail.com> 1766958630 +0530	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 b45a5f8a849fc98511ab9244e083dcb7d79bc477 Nirojan21 <alonenirojan@gmail.com> 1766958630 +0530	Branch: renamed refs/heads/master to refs/heads/main
+b45a5f8a849fc98511ab9244e083dcb7d79bc477 a31e1f86992422a5dc7d24171a8bbe1df20d70a0 Nirojan21 <alonenirojan@gmail.com> 1766958683 +0530	commit: Update .gitignore to exclude .git-project directory
