@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "node scripts/prebuild.js && prisma generate",
     "build": "next build",
-    "build:vercel": "bash scripts/build.sh",
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "postinstall": "prisma generate"
+    "postinstall": "node scripts/prebuild.js && prisma generate || true"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
